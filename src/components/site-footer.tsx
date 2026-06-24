@@ -31,7 +31,7 @@ export function SiteFooter() {
             <h4 className="text-sm font-semibold">Company</h4>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
-              <li><a href="https://t.me/" target="_blank" rel="noreferrer" className="hover:text-foreground">Telegram Support</a></li>
+              <li><a href="https://t.me/Muhammad231722" target="_blank" rel="noreferrer" className="hover:text-foreground">Telegram Support</a></li>
             </ul>
           </div>
         </div>
