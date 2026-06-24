@@ -9,38 +9,306 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WritingRouteImport } from './routes/writing'
+import { Route as VocabularyRouteImport } from './routes/vocabulary'
+import { Route as SpeakingRouteImport } from './routes/speaking'
+import { Route as ResultsRouteImport } from './routes/results'
+import { Route as ReadingRouteImport } from './routes/reading'
+import { Route as PremiumRouteImport } from './routes/premium'
+import { Route as MockTestsRouteImport } from './routes/mock-tests'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ListeningRouteImport } from './routes/listening'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ReadingIndexRouteImport } from './routes/reading.index'
+import { Route as ListeningIndexRouteImport } from './routes/listening.index'
+import { Route as ReadingTestIdRouteImport } from './routes/reading.$testId'
+import { Route as ListeningTestIdRouteImport } from './routes/listening.$testId'
 
+const WritingRoute = WritingRouteImport.update({
+  id: '/writing',
+  path: '/writing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VocabularyRoute = VocabularyRouteImport.update({
+  id: '/vocabulary',
+  path: '/vocabulary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpeakingRoute = SpeakingRouteImport.update({
+  id: '/speaking',
+  path: '/speaking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReadingRoute = ReadingRouteImport.update({
+  id: '/reading',
+  path: '/reading',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PremiumRoute = PremiumRouteImport.update({
+  id: '/premium',
+  path: '/premium',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MockTestsRoute = MockTestsRouteImport.update({
+  id: '/mock-tests',
+  path: '/mock-tests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListeningRoute = ListeningRouteImport.update({
+  id: '/listening',
+  path: '/listening',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReadingIndexRoute = ReadingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ReadingRoute,
+} as any)
+const ListeningIndexRoute = ListeningIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ListeningRoute,
+} as any)
+const ReadingTestIdRoute = ReadingTestIdRouteImport.update({
+  id: '/$testId',
+  path: '/$testId',
+  getParentRoute: () => ReadingRoute,
+} as any)
+const ListeningTestIdRoute = ListeningTestIdRouteImport.update({
+  id: '/$testId',
+  path: '/$testId',
+  getParentRoute: () => ListeningRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/listening': typeof ListeningRouteWithChildren
+  '/login': typeof LoginRoute
+  '/mock-tests': typeof MockTestsRoute
+  '/premium': typeof PremiumRoute
+  '/reading': typeof ReadingRouteWithChildren
+  '/results': typeof ResultsRoute
+  '/speaking': typeof SpeakingRoute
+  '/vocabulary': typeof VocabularyRoute
+  '/writing': typeof WritingRoute
+  '/listening/$testId': typeof ListeningTestIdRoute
+  '/reading/$testId': typeof ReadingTestIdRoute
+  '/listening/': typeof ListeningIndexRoute
+  '/reading/': typeof ReadingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/login': typeof LoginRoute
+  '/mock-tests': typeof MockTestsRoute
+  '/premium': typeof PremiumRoute
+  '/results': typeof ResultsRoute
+  '/speaking': typeof SpeakingRoute
+  '/vocabulary': typeof VocabularyRoute
+  '/writing': typeof WritingRoute
+  '/listening/$testId': typeof ListeningTestIdRoute
+  '/reading/$testId': typeof ReadingTestIdRoute
+  '/listening': typeof ListeningIndexRoute
+  '/reading': typeof ReadingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/listening': typeof ListeningRouteWithChildren
+  '/login': typeof LoginRoute
+  '/mock-tests': typeof MockTestsRoute
+  '/premium': typeof PremiumRoute
+  '/reading': typeof ReadingRouteWithChildren
+  '/results': typeof ResultsRoute
+  '/speaking': typeof SpeakingRoute
+  '/vocabulary': typeof VocabularyRoute
+  '/writing': typeof WritingRoute
+  '/listening/$testId': typeof ListeningTestIdRoute
+  '/reading/$testId': typeof ReadingTestIdRoute
+  '/listening/': typeof ListeningIndexRoute
+  '/reading/': typeof ReadingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/listening'
+    | '/login'
+    | '/mock-tests'
+    | '/premium'
+    | '/reading'
+    | '/results'
+    | '/speaking'
+    | '/vocabulary'
+    | '/writing'
+    | '/listening/$testId'
+    | '/reading/$testId'
+    | '/listening/'
+    | '/reading/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/login'
+    | '/mock-tests'
+    | '/premium'
+    | '/results'
+    | '/speaking'
+    | '/vocabulary'
+    | '/writing'
+    | '/listening/$testId'
+    | '/reading/$testId'
+    | '/listening'
+    | '/reading'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/listening'
+    | '/login'
+    | '/mock-tests'
+    | '/premium'
+    | '/reading'
+    | '/results'
+    | '/speaking'
+    | '/vocabulary'
+    | '/writing'
+    | '/listening/$testId'
+    | '/reading/$testId'
+    | '/listening/'
+    | '/reading/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  ContactRoute: typeof ContactRoute
+  ListeningRoute: typeof ListeningRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  MockTestsRoute: typeof MockTestsRoute
+  PremiumRoute: typeof PremiumRoute
+  ReadingRoute: typeof ReadingRouteWithChildren
+  ResultsRoute: typeof ResultsRoute
+  SpeakingRoute: typeof SpeakingRoute
+  VocabularyRoute: typeof VocabularyRoute
+  WritingRoute: typeof WritingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/writing': {
+      id: '/writing'
+      path: '/writing'
+      fullPath: '/writing'
+      preLoaderRoute: typeof WritingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vocabulary': {
+      id: '/vocabulary'
+      path: '/vocabulary'
+      fullPath: '/vocabulary'
+      preLoaderRoute: typeof VocabularyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/speaking': {
+      id: '/speaking'
+      path: '/speaking'
+      fullPath: '/speaking'
+      preLoaderRoute: typeof SpeakingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reading': {
+      id: '/reading'
+      path: '/reading'
+      fullPath: '/reading'
+      preLoaderRoute: typeof ReadingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premium': {
+      id: '/premium'
+      path: '/premium'
+      fullPath: '/premium'
+      preLoaderRoute: typeof PremiumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mock-tests': {
+      id: '/mock-tests'
+      path: '/mock-tests'
+      fullPath: '/mock-tests'
+      preLoaderRoute: typeof MockTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listening': {
+      id: '/listening'
+      path: '/listening'
+      fullPath: '/listening'
+      preLoaderRoute: typeof ListeningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +316,77 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reading/': {
+      id: '/reading/'
+      path: '/'
+      fullPath: '/reading/'
+      preLoaderRoute: typeof ReadingIndexRouteImport
+      parentRoute: typeof ReadingRoute
+    }
+    '/listening/': {
+      id: '/listening/'
+      path: '/'
+      fullPath: '/listening/'
+      preLoaderRoute: typeof ListeningIndexRouteImport
+      parentRoute: typeof ListeningRoute
+    }
+    '/reading/$testId': {
+      id: '/reading/$testId'
+      path: '/$testId'
+      fullPath: '/reading/$testId'
+      preLoaderRoute: typeof ReadingTestIdRouteImport
+      parentRoute: typeof ReadingRoute
+    }
+    '/listening/$testId': {
+      id: '/listening/$testId'
+      path: '/$testId'
+      fullPath: '/listening/$testId'
+      preLoaderRoute: typeof ListeningTestIdRouteImport
+      parentRoute: typeof ListeningRoute
+    }
   }
 }
 
+interface ListeningRouteChildren {
+  ListeningTestIdRoute: typeof ListeningTestIdRoute
+  ListeningIndexRoute: typeof ListeningIndexRoute
+}
+
+const ListeningRouteChildren: ListeningRouteChildren = {
+  ListeningTestIdRoute: ListeningTestIdRoute,
+  ListeningIndexRoute: ListeningIndexRoute,
+}
+
+const ListeningRouteWithChildren = ListeningRoute._addFileChildren(
+  ListeningRouteChildren,
+)
+
+interface ReadingRouteChildren {
+  ReadingTestIdRoute: typeof ReadingTestIdRoute
+  ReadingIndexRoute: typeof ReadingIndexRoute
+}
+
+const ReadingRouteChildren: ReadingRouteChildren = {
+  ReadingTestIdRoute: ReadingTestIdRoute,
+  ReadingIndexRoute: ReadingIndexRoute,
+}
+
+const ReadingRouteWithChildren =
+  ReadingRoute._addFileChildren(ReadingRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  ContactRoute: ContactRoute,
+  ListeningRoute: ListeningRouteWithChildren,
+  LoginRoute: LoginRoute,
+  MockTestsRoute: MockTestsRoute,
+  PremiumRoute: PremiumRoute,
+  ReadingRoute: ReadingRouteWithChildren,
+  ResultsRoute: ResultsRoute,
+  SpeakingRoute: SpeakingRoute,
+  VocabularyRoute: VocabularyRoute,
+  WritingRoute: WritingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
