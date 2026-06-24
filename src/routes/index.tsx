@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpen, Headphones, PenLine, Mic, Sparkles, ClipboardCheck, ArrowRight, Trophy, Target, Users, Star } from "lucide-react";
+import { BookOpen, Headphones, PenLine, Mic, Sparkles, ClipboardCheck, ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Button } from "@/components/ui/button";
-import { testimonials } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -97,50 +96,6 @@ function Home() {
               <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
               <span className="mt-3 inline-block rounded-full bg-muted px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">COMING SOON</span>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="border-y border-border bg-secondary/40">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { icon: Users, value: "42,000+", label: "Active learners" },
-            { icon: Trophy, value: "8.2", label: "Avg. band score" },
-            { icon: Target, value: "95%", label: "Reach target score" },
-            { icon: Star, value: "4.9/5", label: "Student rating" },
-          ].map((s) => (
-            <div key={s.label} className="flex items-center gap-4">
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
-                <s.icon className="h-6 w-6" />
-              </div>
-              <div>
-                <div className="font-display text-2xl font-semibold">{s.value}</div>
-                <div className="text-sm text-muted-foreground">{s.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="mx-auto max-w-7xl px-4 py-16">
-        <div className="mb-10 text-center">
-          <h2 className="text-2xl font-semibold md:text-3xl">What our students say</h2>
-          <p className="mt-2 text-sm text-muted-foreground">Real progress from real learners.</p>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
-              <div className="flex gap-0.5 text-primary">
-                {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-              </div>
-              <blockquote className="mt-4 text-sm leading-relaxed">"{t.quote}"</blockquote>
-              <figcaption className="mt-5 flex items-center justify-between border-t border-border pt-4">
-                <span className="font-medium">{t.name}</span>
-                <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">{t.score}</span>
-              </figcaption>
-            </figure>
           ))}
         </div>
       </section>
