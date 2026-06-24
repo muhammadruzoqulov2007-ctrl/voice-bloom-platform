@@ -2,8 +2,8 @@ import { Send } from "lucide-react";
 
 export function TelegramButton() {
   return (
-    <a
-      href="https://t.me/"
+    
+      href="https://t.me/Muhammad231722"
       target="_blank"
       rel="noreferrer"
       aria-label="Telegram support"
